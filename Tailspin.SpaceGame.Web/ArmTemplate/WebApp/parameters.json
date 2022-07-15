@@ -1,43 +1,42 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "subscriptionId": {
-      "value": "4fc03c16-d882-44a5-8d3a-697d1d16fc81"
-    },
-    "name": {
-      "value": "appwithoz"
-    },
-    "location": {
-      "value": "UAE North"
-    },
-    "hostingPlanName": {
-      "value": "ASP-tailspinwebRG-a404"
-    },
-    "serverFarmResourceGroup": {
-      "value": "tailspin_webRG"
-    },
-    "alwaysOn": {
-      "value": false
-    },
-    "sku": {
-      "value": "Basic"
-    },
-    "skuCode": {
-      "value": "B1"
-    },
-    "workerSize": {
-      "value": "0"
-    },
-    "workerSizeId": {
-      "value": "0"
-    },
-    "numberOfWorkers": {
-      "value": "1"
-    },
-    "linuxFxVersion": {
-      "value": "DOTNETCORE|6.0"
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "aac2dace-173c-4031-b808-fa227d94ae80"
+        },
+        "name": {
+            "value": "webappwithoz"
+        },
+        "location": {
+            "value": "UAE North"
+        },
+        "hostingPlanName": {
+            "value": "ASP-AzureDevOpsARM-a766"
+        },
+        "serverFarmResourceGroup": {
+            "value": "AzureDevOpsARM"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "sku": {
+            "value": "Basic"
+        },
+        "skuCode": {
+            "value": "B1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "linuxFxVersion": {
+            "value": "DOTNETCORE|6.0"
+        }
     }
-  }
 }
-
