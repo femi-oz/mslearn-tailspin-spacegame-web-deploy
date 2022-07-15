@@ -7,5 +7,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\avatars\" />
+    <Folder Include="Arm Template\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Arm Template\" />
   </ItemGroup>
 </Project>
