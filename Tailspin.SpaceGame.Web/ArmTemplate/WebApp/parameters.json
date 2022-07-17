@@ -6,16 +6,16 @@
             "value": "aac2dace-173c-4031-b808-fa227d94ae80"
         },
         "name": {
-            "value": "webappwithoz"
+            "value": "MyWebApp588642"
         },
         "location": {
-            "value": "UAE North"
+            "value": "Central US"
         },
         "hostingPlanName": {
-            "value": "ASP-AzureDevOpsARM-a766"
+            "value": "ASP-myResourceGroup-bf79"
         },
         "serverFarmResourceGroup": {
-            "value": "AzureDevOpsARM"
+            "value": "myResourceGroup"
         },
         "alwaysOn": {
             "value": false
@@ -35,8 +35,14 @@
         "numberOfWorkers": {
             "value": "1"
         },
-        "linuxFxVersion": {
-            "value": "DOTNETCORE|6.0"
+        "currentStack": {
+            "value": "dotnet"
+        },
+        "phpVersion": {
+            "value": "OFF"
+        },
+        "netFrameworkVersion": {
+            "value": "v6.0"
         }
     }
 }

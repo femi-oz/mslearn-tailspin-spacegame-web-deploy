@@ -35,7 +35,13 @@
         "numberOfWorkers": {
             "type": "string"
         },
-        "linuxFxVersion": {
+        "currentStack": {
+            "type": "string"
+        },
+        "phpVersion": {
+            "type": "string"
+        },
+        "netFrameworkVersion": {
             "type": "string"
         }
     },
@@ -48,17 +54,42 @@
             "location": "[parameters('location')]",
             "tags": null,
             "dependsOn": [
+                "microsoft.insights/components/MyWebApp588642",
                 "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
             ],
             "properties": {
                 "name": "[parameters('name')]",
                 "siteConfig": {
-                    "appSettings": [],
-                    "linuxFxVersion": "[parameters('linuxFxVersion')]",
+                    "appSettings": [
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference('microsoft.insights/components/MyWebApp588642', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/MyWebApp588642', '2015-05-01').ConnectionString]"
+                        },
+                        {
+                            "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
+                            "value": "~3"
+                        },
+                        {
+                            "name": "XDT_MicrosoftApplicationInsights_Mode",
+                            "value": "Recommended"
+                        }
+                    ],
+                    "metadata": [
+                        {
+                            "name": "CURRENT_STACK",
+                            "value": "[parameters('currentStack')]"
+                        }
+                    ],
+                    "phpVersion": "[parameters('phpVersion')]",
+                    "netFrameworkVersion": "[parameters('netFrameworkVersion')]",
                     "alwaysOn": "[parameters('alwaysOn')]"
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "clientAffinityEnabled": false,
+                "clientAffinityEnabled": true,
                 "virtualNetworkSubnetId": null
             }
         },
@@ -67,7 +98,7 @@
             "name": "[parameters('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('location')]",
-            "kind": "linux",
+            "kind": "",
             "tags": null,
             "dependsOn": [],
             "properties": {
@@ -75,12 +106,26 @@
                 "workerSize": "[parameters('workerSize')]",
                 "workerSizeId": "[parameters('workerSizeId')]",
                 "numberOfWorkers": "[parameters('numberOfWorkers')]",
-                "reserved": true,
                 "zoneRedundant": false
             },
             "sku": {
                 "Tier": "[parameters('sku')]",
                 "Name": "[parameters('skuCode')]"
+            }
+        },
+        {
+            "apiVersion": "2020-02-02-preview",
+            "name": "MyWebApp588642",
+            "type": "microsoft.insights/components",
+            "location": "centralus",
+            "tags": null,
+            "dependsOn": [],
+            "properties": {
+                "ApplicationId": "[parameters('name')]",
+                "Request_Source": "IbizaWebAppExtensionCreate",
+                "Flow_Type": "Redfield",
+                "Application_Type": "web",
+                "WorkspaceResourceId": "/subscriptions/aac2dace-173c-4031-b808-fa227d94ae80/resourceGroups/DefaultResourceGroup-WUK/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-aac2dace-173c-4031-b808-fa227d94ae80-WUK"
             }
         }
     ]
