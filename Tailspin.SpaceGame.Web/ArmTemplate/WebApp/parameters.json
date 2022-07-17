@@ -6,13 +6,13 @@
             "value": "aac2dace-173c-4031-b808-fa227d94ae80"
         },
         "name": {
-            "value": "gait-tech"
+            "value": "myWebApp077858"
         },
         "location": {
-            "value": "Central US"
+            "value": "UAE North"
         },
         "hostingPlanName": {
-            "value": "ASP-myResourceGroup-bf79"
+            "value": "ASP-myResourceGroup-8ff8"
         },
         "serverFarmResourceGroup": {
             "value": "myResourceGroup"
@@ -35,14 +35,8 @@
         "numberOfWorkers": {
             "value": "1"
         },
-        "currentStack": {
-            "value": "dotnet"
-        },
-        "phpVersion": {
-            "value": "OFF"
-        },
-        "netFrameworkVersion": {
-            "value": "v6.0"
+        "linuxFxVersion": {
+            "value": "DOTNETCORE|6.0"
         }
     }
 }
