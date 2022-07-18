@@ -63,11 +63,6 @@ stages:
         arguments: '--no-restore --configuration $(buildConfiguration)'
         projects: '**/*.csproj'
 
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)/DropArmTemplate'
-      inputs:
-        SourceFolder: Tailspin.SpaceGame.Web/ArmTemplate/WebApp
-        TargetFolder: '$(Build.ArtifactStagingDirectory)/DropArmTemplate'
 
     - task: DotNetCoreCLI@2
       displayName: 'Publish the project - $(buildConfiguration)'
@@ -81,16 +76,3 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
   
-    - task: AzureResourceManagerTemplateDeployment@3
-      inputs:
-        deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'WebApp_SC'
-        subscriptionId: 'aac2dace-173c-4031-b808-fa227d94ae80'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'myResourceGroup'
-        location: 'UAE North'
-        templateLocation: 'Linked artifact'
-        csmFile: '$(System.DefaultWorkingDirectory)/_Space Game Web - Release-ASP.NET Core-CI/drop/DropArmTemplate/template.json'
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/_Space Game Web - Release-ASP.NET Core-CI/drop/DropArmTemplate/parameters.json'
-        overrideParameters: '-name "Test server-release"'
-        deploymentMode: 'Incremental'
