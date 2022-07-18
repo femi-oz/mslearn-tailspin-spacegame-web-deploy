@@ -73,17 +73,3 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
-
-    - task: AzureResourceManagerTemplateDeployment@3
-      inputs:
-        deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'WebApp_SC'
-        subscriptionId: 'aac2dace-173c-4031-b808-fa227d94ae80'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'myResourceGroup'
-        location: 'UAE North'
-        templateLocation: 'Linked artifact'
-        csmFile: 'https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json'
-        csmParametersFile: 'https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json'
-        deploymentMode: 'Incremental'
-  
