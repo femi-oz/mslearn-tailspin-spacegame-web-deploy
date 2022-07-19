@@ -5,12 +5,6 @@
         "subscriptionId": {
             "type": "string"
         },
-
-        "storagePrefix": {
-           "type": "string",
-           "minLength": 3,
-           "maxLength": 11
-       },
         "name": {
             "type": "string"
         },
@@ -45,13 +39,11 @@
             "type": "string"
         }
     },
-     "variables": {
-    "storageName": "[concat(toLower(parameters('storagePrefix')), uniqueString(resourceGroup().id))]"
-    },
+    "variables": {},
     "resources": [
         {
             "apiVersion": "2018-11-01",
-            "name": "[variables('storageName')]",
+            "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
             "tags": null,
